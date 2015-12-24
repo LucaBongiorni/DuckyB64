@@ -1,0 +1,11 @@
+﻿STRING using System;using System.Diagnostics;using System.IO;using System.IO.Compression;
+ENTER
+STRING class Program{static void Main(string[] args){string s = args[0];
+ENTER
+STRING string d = args[1];string b64 = File.ReadAllText(s);byte[] b = Convert.FromBase64String(b64);
+ENTER
+STRING using (Stream cs = new MemoryStream(b))using (GZipStream zs = new GZipStream(cs, CompressionMode.Decompress))
+ENTER
+STRING using (MemoryStream ds = new MemoryStream()){byte[] z = new byte[4096];int r;do{r = zs.Read(z, 0, z.Length);
+ENTER
+STRING ds.Write(z, 0, r);}while (r > 0);b = ds.ToArray();}File.WriteAllBytes(d, b);}}
